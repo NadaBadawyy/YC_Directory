@@ -1,26 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-work-sans: "Work Sans", sans-serif;
+
+  /* Breakpoints */
+  --breakpoint-xs: 475px;
+
+  /* Colors */
+  --color-primary-100: #FFE8F0;
+  --color-primary: #EE2B69;
+  --color-secondary: #FBE843;
+  --color-black-100: #333333;
+  --color-black-200: #141413;
+  --color-black-300: #7D8087;
+  --color-black: #000000;
+  --color-white-100: #F7F7F7;
+  --color-white: #FFFFFF;
+
+  /* Border radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Shadows */
+  --shadow-100: 2px 2px 0px 0px rgb(0, 0, 0);
+  --shadow-200: 2px 2px 0px 2px rgb(0, 0, 0);
+  --shadow-300: 2px 2px 0px 2px rgb(238, 43, 105);
+
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* 2. Create any custom utilities you need */
+@layer utilities {
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Example: extra small breakpoint utility */
+  @media (min-width: var(--breakpoint-xs)) {
+    .xs\:text-lg {
+      font-size: 1.125rem;
+    }
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* You can define shadows, colors, border-radius, etc., using your variables */
+  .shadow-100 {
+    box-shadow: var(--shadow-100);
+  }
+
+  .shadow-200 {
+    box-shadow: var(--shadow-200);
+  }
+
+  .shadow-300 {
+    box-shadow: var(--shadow-300);
+  }
+
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+
+  .rounded-sm {
+    border-radius: var(--radius-sm);
+  }
+
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  .bg-primary-100 {
+    background-color: var(--color-primary-100);
+  }
+
+  .header {
+    @apply text-white text-center bg-black py-3 px-6 sm:text-[54px] text-[36px] sm:leading-[64px] leading-[46px] font-extrabold uppercase max-w-5xl mt-20
+  }
+
+  .sub-header {
+    @apply my-7 text-center text-white text-xl font-medium
+  }
+  .search-input{
+    @apply flex justify-between items-center mt-7 bg-white rounded-full  border-4 border-black
+  }
+
+  .search-btn {
+    @apply flex justify-center items-center bg-black text-white rounded-full  p-4
+  }
+
+  .pattern {
+    background-image: linear-gradient(to right,
+        transparent 49.5%,
+        rgba(251, 232, 67, 0.2) 49.5%,
+        rgba(251, 232, 67, 0.6) 50.5%,
+        transparent 50.5%);
+    background-size: 5% 100%;
+    background-position: center;
+    background-repeat: repeat-x;
+  }
+
 }
