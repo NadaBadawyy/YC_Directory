@@ -1,10 +1,9 @@
+import { auth } from "@/auth";
 import SearchForm from "@/components/SearchForm";
 import StartupCard from "@/components/StartupCard";
 import { StartupCardType } from "@/lib/types";
-import { client } from "@/sanity/lib/client";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { STARTUP_QUERY } from "@/sanity/lib/queries";
-
 
 export default async function Home({
   searchParams,
@@ -13,12 +12,12 @@ export default async function Home({
 }) {
   const query = (await searchParams).query ?? "";
   const {data:posts}=await sanityFetch({query:STARTUP_QUERY,params:{search: query||null}})
-
+  const session= await auth();
   return (
     <>
     
-      <section className="pattern py-16 xl:py-28 px-5 xl:px-52 bg-primary">
-        <div className="header ">
+      <section className="pattern py-16 xl:py-28 pink-container">
+        <div className="header mt-20">
           <p>
             Pitch Your Startup, <br /> Connect With Entrepreneurs
           </p>
@@ -32,14 +31,12 @@ export default async function Home({
         </div>
       </section>
 
-      <section className="px-28 py-10">
+      <section className="xl:px-28 px-10 py-10">
         <p className="font-semibold text-3xl  "> {query!=''?` Search Results for "${query}"`: 'All Startups'} </p>
-        <div className="grid grid-cols-3 gap-5 my-5">
-          {posts?.map((p:StartupCardType) => {
-            return  <StartupCard key={p._id} post={p }/>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-5 gap-y-5 my-5">
+          {posts?.map((p) => {
+            return  <StartupCard key={p._id} post={p as StartupCardType}/>
           })}
-         
-
         </div>
       </section>
       <SanityLive/>

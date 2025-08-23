@@ -22,3 +22,15 @@ export const STARTUP_DETAILS_QUERY=defineQuery(`
 }  
   
   `)
+export const STARTUP_VIEWS_QUERY=defineQuery(`
+ *[_type=='startup' &&_id==$id][0]{
+  _id,views
+}  
+  
+  `)
+export const AUTHOR_GITHUB_BY_ID=defineQuery(`
+ *[_type=='author' &&_id==$id][0]{
+  _id,name  ,image,bio,username, email, id ,bio
+}  
+  
+  `)

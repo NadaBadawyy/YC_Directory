@@ -75,9 +75,12 @@
   .bg-primary-100 {
     background-color: var(--color-primary-100);
   }
+  .bg-container-time{
+    background-color: #FBE843;
+  }
 
   .header {
-    @apply text-white text-center bg-black py-3 px-6 sm:text-[54px] text-[36px] sm:leading-[64px] leading-[46px] font-extrabold uppercase max-w-5xl mt-20
+    @apply text-white text-center bg-black py-3 px-6 md:text-[54px] text-[36px] sm:leading-[64px] leading-[46px] font-extrabold uppercase max-w-5xl 
   }
 
   .sub-header {
@@ -90,6 +93,9 @@
   .search-btn {
     @apply flex justify-center items-center bg-black text-white rounded-full  p-4
   }
+ .tag-tri {
+    @apply before:content-[''] before:absolute before:top-2 before:left-2 before:border-t-[10px] before:border-t-black before:border-r-[10px] before:border-r-transparent after:content-[''] after:absolute after:bottom-2 after:right-2 after:border-b-[10px] after:border-b-black after:border-l-[10px] after:border-l-transparent;
+  }
 
   .pattern {
     background-image: linear-gradient(to right,
@@ -100,6 +106,11 @@
     background-size: 5% 100%;
     background-position: center;
     background-repeat: repeat-x;
+  }
+
+  
+  .pink-container{
+    @apply  px-5 xl:px-52 bg-primary
   }
 
 }
