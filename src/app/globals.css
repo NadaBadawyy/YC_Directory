@@ -112,5 +112,7 @@
   .pink-container{
     @apply  px-5 xl:px-52 bg-primary
   }
+  
+  /* */
 
 }
