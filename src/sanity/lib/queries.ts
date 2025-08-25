@@ -34,3 +34,13 @@ export const AUTHOR_GITHUB_BY_ID=defineQuery(`
 }  
   
   `)
+  export const AUTHER_STARTUP_QUERY= defineQuery(`
+    *[_type=='startup' &&defined(slug.current) && author._ref==$id ] | order(_createdAt desc){
+  _id,title,slug,_createdAt,
+    author -> {
+      _id,name  ,image,bio
+    }
+    ,views,description,
+    category,image
+}
+    `)
