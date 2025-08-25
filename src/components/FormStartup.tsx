@@ -12,27 +12,29 @@ import { Spinner } from "./ui/shadcn-io/spinner";
 import { toast } from "sonner";
 import { schema } from "@/lib/FormValidation";
 import { useRouter } from "next/navigation";
+import { FormType } from "@/lib/types";
+import { createStartupAction } from "@/lib/actions";
 
 
 function FormStartup() {
    
-    const router=useRouter()
-    type FormType=z.infer<typeof schema>
+    const router=useRouter();
     const {register,handleSubmit,formState:{errors,isSubmitting},control}=useForm<FormType>({
         resolver:zodResolver(schema)
     })
     const submitData= async (data:FormType)=>{
-        try{
-        console.log(data);
-        
-        await schema.parseAsync(data)
-        toast.success('Startup has been created successfully')
-        router.push('/')
+       try {
+    const res = await createStartupAction(data);
 
-        }
-        catch(error){
-            toast.error(`An Error Occured: ${error}`)
-        }
+    if (res.success) {
+      toast.success("Startup has been created successfully!");
+      router.push(`/startup/${res?.id}`);
+    } else {
+      toast.error(`Failed: ${res.error}`);
+    }
+  } catch (error) {
+    toast.error(`Unexpected error: ${error}`);
+  }
         
         
     }
