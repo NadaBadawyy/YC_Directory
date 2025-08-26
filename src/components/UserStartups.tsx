@@ -8,7 +8,7 @@ async function UserStartups({id}:{id:string}) {
   return (
     <>
       {startups.length>0 ?<>
-      {startups.map((s:StartupCardType)=><StartupCard post={s} key={s._id}/>)}
+      {startups.map((s)=><StartupCard post={s as StartupCardType} key={s._id}/>)}
       
       </>:<p className="text-3xl underline p-5 bg-primary-100 rounded-3xl w-fit shadow-xl   "> No Posts Yet</p>}
     </>

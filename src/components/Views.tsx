@@ -4,7 +4,8 @@ import { writeClient } from "@/sanity/lib/write-client";
 import { after } from "next/server";
 
 export default async function Views({id}:{id:string}) {
-    const {views}=await client.withConfig({useCdn:false}).fetch(STARTUP_VIEWS_QUERY,{id})
+    const res =await client.withConfig({useCdn:false}).fetch(STARTUP_VIEWS_QUERY,{id});
+    const views=res?.views?res.views:0;
     after(async()=>await writeClient.patch(id).set({views:views+1}).commit())
   return (
     <>

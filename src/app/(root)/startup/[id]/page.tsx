@@ -1,5 +1,5 @@
+import RelatedStartups from "@/components/RelatedStartups";
 import Views from "@/components/Views";
-import { StartupCardType } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
 import { STARTUP_DETAILS_QUERY } from "@/sanity/lib/queries";
@@ -13,6 +13,8 @@ export default async function StartupDetails({
 }) {
   const { id } = await params;
   const post = await client.fetch(STARTUP_DETAILS_QUERY, { id });
+
+    
   if (!post) return notFound();
   return (
     <section>
@@ -47,9 +49,12 @@ export default async function StartupDetails({
             <p>{post?.category}</p>
           </div>
         </div>
-        <img src={`${post?.image}`} className="my-5  rounded-xl w-full h-auto " alt="" />
+        <img src={`${post?.image}`} className="my-5  rounded-xl m-auto object-cover w-full max-h-[600px] " alt=""  height={400}/>
+<RelatedStartups category={post?.category||''} id={post._id}/>
       </div>
       <Views id={id}/>
+                
+
     </section>
   );
 }

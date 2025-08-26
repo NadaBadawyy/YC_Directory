@@ -19,7 +19,7 @@ export default function RootLayout({
         className={`font-work-sans`}
       >
         {children}
-        <Toaster/>
+        <Toaster position="top-center" richColors  />
       </body>
     </html>
   );

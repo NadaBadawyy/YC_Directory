@@ -9,7 +9,7 @@ export default function SignInButton() {
         await signIn("github")
       }}
     >
-      <button type="submit" className="text-primary font-bold cursor-pointer ">Signin</button>
+      <button type="submit" className="text-primary font-bold cursor-pointer ">Login</button>
     </form>
     </>
   )

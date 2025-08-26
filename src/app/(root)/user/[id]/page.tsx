@@ -17,7 +17,7 @@ export default async function page({
   const user = await client.fetch(AUTHOR_GITHUB_BY_ID, { id });
   if (!user) return notFound();
   return (
-    <section className="mt-24 p-10 ">
+    <section className="mt-24 py-10 md:px-10 px-3 ">
       <div className=" bg-primary  p-10  border-t-4 border-r-8 border-l-4 border-b-8 border-black rounded-4xl m-auto text-center relative z-[1]">
         <Image
           src={`${user.image}`}
