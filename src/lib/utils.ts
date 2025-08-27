@@ -9,8 +9,10 @@ export function formatDate(date: string) {
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: "Africa/Cairo", 
   });
 }
+
 export function parseJSON<T>(data:T){
   return JSON.parse(JSON.stringify(data));
 

@@ -33,8 +33,8 @@ export default async function StartupDetails({
         </div>
       </div>
       <div className="px-5 md:px-24 my-5 ">
-        <div className="flex justify-between items-center ">
-          <Link href={`/author/${id}`}> 
+        <div className="flex justify-between items-center flex-wrap  ">
+          
           <div className="flex gap-2 items-center">
             <img src={`${post?.author?.image}`} alt="img" width={64} height={64} className="rounded-full shadow-lg" />
             <div className="">
@@ -43,7 +43,7 @@ export default async function StartupDetails({
             </div>
          
           </div>
-          </Link>
+          
          
           <div className="px-5 py-2 bg-primary-100 rounded-full font-medium">
             <p>{post?.category}</p>

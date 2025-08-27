@@ -14,7 +14,6 @@ export default async function Home({
 }) {
   const query = (await searchParams).query ?? "";
   const {data:posts}=await sanityFetch({query:STARTUP_QUERY,params:{search: query||null}})
-  const session= await auth();
   return (
     <>
     
@@ -33,7 +32,7 @@ export default async function Home({
         </div>
       </section>
 
-      <section className="xl:px-28 px-10 py-10">
+      <section className="xl:px-28 md:px-10 px-3 py-10">
         <p className="font-semibold text-3xl  "> {query!=''?` Search Results for "${query}"`: 'All Startups'} </p>
         <Suspense fallback={<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-5 gap-y-5 my-5">
             {Array.from({ length: 10 }).map((_, i) => (
