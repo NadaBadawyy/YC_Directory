@@ -12,7 +12,7 @@ export default async function Home({
 }: {
   searchParams: Promise<{ query?: string }>;
 }) {
-  const query = (await searchParams).query ?? "";
+  const query = (await searchParams).query ;
   const {data:posts}=await sanityFetch({query:STARTUP_QUERY,params:{search: query||null}})
   return (
     <>
@@ -28,7 +28,7 @@ export default async function Home({
           Competitions.
         </p>
         <div className="lg:px-16">
-          <SearchForm query={query} />
+          <SearchForm query={query??""} />
         </div>
       </section>
 
